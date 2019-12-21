@@ -1,0 +1,74 @@
+1. Сделать методы для работы с БД (CREATE, UPDATE, DELETE, INSERT, SELECT)
+BD.dz_1
+2. Добавить в сетевой логирования входа/выхода + неудачный вход
+
+создала три таблицы в users.db: logs_in,logs_out,logs_unsuccesfl_in
+ c полями id_person( id человека из таблицы main) и Date (дата и время событий).
+
+
+Создала 3 метода в AuthService:
+
+//логирование входа
+    public static void logs_in(String nick){
+        Date date = new Date();
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT id, nickname FROM main WHERE nickname = " + nick);
+            stmt.executeUpdate("INSERT INTO logs_in (id_person,Date) VALUES ( " + rs + " , " + date.getTime() + ")");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //логирование выхода
+    public static void logs_out(String nick){
+        Date date = new Date();
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT id, nickname FROM main WHERE nickname = " + nick);
+            stmt.executeUpdate("INSERT INTO logs_out (id_person,Date) VALUES ( " + rs + " , " + date.getTime() + ")");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //логирование неудачного входа
+    public static void logs_unsuccesful_in(String nick){
+        Date date = new Date();
+        try {
+            ResultSet rs = stmt.executeQuery("SELECT id, nickname FROM main WHERE nickname = " + nick);
+            stmt.executeUpdate("INSERT INTO logs_unsuccesful_in (id_person,Date) VALUES ( " + rs + " , " + date.getTime() + ")");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+Использовала эти методы в ClientHandler:
+
+
+
+if (newNick != null) {
+                                if (!server.isNickBusy(newNick)) {
+                                    sendMsg("/authok");
+                                    nick = newNick;
+                                    server.subscribe(this);
+                                    AuthService.logs_in(nick); //логирование входа
+                                    break;
+                                } else {
+                                    sendMsg("Учетная запись уже используется");
+                                    AuthService.logs_unsuccesful_in(nick); //логирование неудачного входа
+                                }
+                            } else {
+                                sendMsg("Неверный логин/пароль");
+                                AuthService.logs_unsuccesful_in(nick); //логирование неудачного входа
+                            }
+                        }
+                    }
+                    while (true) {
+                        String str = in.readUTF();
+                        if (str.startsWith("/")) {
+                            if (str.equals("/end")) {
+                                AuthService.logs_out(nick); //логирование выхода
+                                out.writeUTF("/serverclosed");
+                                break;
+                            }

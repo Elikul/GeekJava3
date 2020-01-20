@@ -1,0 +1,13 @@
+
+
+INSERT INTO Dates(DateStart,DateEnd) VALUES(120000,140000);
+INSERT INTO Dates(DateStart,DateEnd) VALUES(130000,170000);
+INSERT INTO Dates(DateStart,DateEnd) VALUES(090000,100000);
+INSERT INTO Dates(DateStart,DateEnd) VALUES(180000,220000);
+INSERT INTO Dates(DateStart,DateEnd) VALUES(180000,200000);
+INSERT INTO Dates(DateStart,DateEnd) VALUES(070000,100000);
+
+SELECT * FROM Dates;
+SELECT DateStart, DateEnd FROM Dates where DateStart >= 120000 AND DateEnd <= 173000;
+
+DELETE  FROM Dates;

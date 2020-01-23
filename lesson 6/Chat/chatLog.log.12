@@ -1,0 +1,18 @@
+янв 23, 2020 6:08:19 PM chat.server.Server sendPersonalMsg
+INFO: Клиент nick3 отправил личное сообщение nick1
+янв 23, 2020 6:08:36 PM chat.server.Server broadcastClientsList
+INFO: Клиент nick1 вошёл в систему!
+янв 23, 2020 6:08:36 PM chat.server.Server broadcastClientsList
+INFO: Клиент nick2 вошёл в систему!
+янв 23, 2020 6:08:36 PM chat.server.Server broadcastClientsList
+INFO: Клиент nick1 отправил сообщение!
+янв 23, 2020 6:08:36 PM chat.server.Server broadcastClientsList
+INFO: Клиент nick2 отправил сообщение!
+янв 23, 2020 6:08:41 PM chat.server.Server broadcastMsg
+INFO: Клиент nick2 отправил сообщение!
+янв 23, 2020 6:08:41 PM chat.server.Server broadcastMsg
+INFO: Клиент nick2 отправил сообщение!
+янв 23, 2020 6:08:46 PM chat.server.Server broadcastClientsList
+INFO: Клиент nick1 вошёл в систему!
+янв 23, 2020 6:08:46 PM chat.server.Server broadcastClientsList
+INFO: Клиент nick1 отправил сообщение!

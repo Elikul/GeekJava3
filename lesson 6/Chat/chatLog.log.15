@@ -1,0 +1,4 @@
+янв 23, 2020 6:08:46 PM chat.server.Server broadcastClientsList
+INFO: Клиент nick1 вошёл в систему!
+янв 23, 2020 6:08:46 PM chat.server.Server broadcastClientsList
+INFO: Клиент nick1 отправил сообщение!
